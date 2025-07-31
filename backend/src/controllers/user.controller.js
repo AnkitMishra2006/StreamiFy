@@ -73,14 +73,14 @@ export async function sendFriendRequest(req, res) {
       });
     }
 
-    const FriendRequest = await FriendRequest.create({
+    const friendRequest = await FriendRequest.create({
       sender: myId,
       recipient: recipientId,
     });
 
     res.status(201).json({
       message: "Friend request sent successfully.",
-      friendRequest: FriendRequest,
+      friendRequest: friendRequest,
     });
   } catch (error) {
     console.error("Error in sendFriendRequest controller", error.message);
