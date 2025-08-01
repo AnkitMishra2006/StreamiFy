@@ -29,7 +29,7 @@ export default function App() {
       <Routes>
         <Route
           path="/"
-          element={authUser ? <HomePage /> : <Navigate to="/login" />}
+          element={authUser ? <HomePage /> : <Navigate to="/signup" />}
         />
         <Route
           path="/signup"
@@ -41,19 +41,19 @@ export default function App() {
         />
         <Route
           path="/notifications"
-          element={authUser ? <NotificationsPage /> : <Navigate to="/login" />}
+          element={authUser ? <NotificationsPage /> : <Navigate to="/signup" />}
         />
         <Route
           path="/call"
-          element={authUser ? <CallPage /> : <Navigate to="/login" />}
+          element={authUser ? <CallPage /> : <Navigate to="/signup" />}
         />
         <Route
           path="/chat"
-          element={authUser ? <ChatPage /> : <Navigate to="/login" />}
+          element={authUser ? <ChatPage /> : <Navigate to="/signup" />}
         />
         <Route
           path="/onboarding"
-          element={authUser ? <OnboardingPage /> : <Navigate to="/login" />}
+          element={authUser ? <OnboardingPage /> : <Navigate to="/signup" />}
         />
       </Routes>
       <Toaster />
