@@ -9,6 +9,7 @@ import OnboardingPage from "./pages/OnboardingPage.jsx";
 import { Toaster } from "react-hot-toast";
 import PageLoader from "./components/PageLoader.jsx";
 import useAuthUser from "./hooks/useAuthUser.js";
+import Layout from "./components/Layout.jsx";
 
 export default function App() {
   const { authUser, isLoading } = useAuthUser(); // Assuming useAuth is a custom hook that provides auth data and loading state
@@ -27,7 +28,9 @@ export default function App() {
           path="/"
           element={
             isAuthenticated && isOnboarded ? (
-              <HomePage />
+              <Layout showSidebar={true}>
+                <HomePage />
+              </Layout>
             ) : (
               <Navigate to={!isAuthenticated ? "/signup" : "/onboarding"} />
             )
