@@ -34,7 +34,7 @@ export default function App() {
                 <HomePage />
               </Layout>
             ) : (
-              <Navigate to={!isAuthenticated ? "/signup" : "/onboarding"} />
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
             )
           }
         />
@@ -55,16 +55,22 @@ export default function App() {
         <Route
           path="/notifications"
           element={
-            isAuthenticated ? <NotificationsPage /> : <Navigate to="/signup" />
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={true}>
+                <NotificationsPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
           }
         />
         <Route
           path="/call"
-          element={isAuthenticated ? <CallPage /> : <Navigate to="/signup" />}
+          element={isAuthenticated ? <CallPage /> : <Navigate to="/login" />}
         />
         <Route
           path="/chat"
-          element={isAuthenticated ? <ChatPage /> : <Navigate to="/signup" />}
+          element={isAuthenticated ? <ChatPage /> : <Navigate to="/login" />}
         />
         <Route
           path="/onboarding"
