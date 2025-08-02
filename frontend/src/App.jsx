@@ -12,7 +12,6 @@ import useAuthUser from "./hooks/useAuthUser.js";
 import Layout from "./components/Layout.jsx";
 import { useThemeStore } from "./store/useThemeStore.js";
 
-
 export default function App() {
   const { authUser, isLoading } = useAuthUser(); // Assuming useAuth is a custom hook that provides auth data and loading state
   const { theme } = useThemeStore();
@@ -66,8 +65,16 @@ export default function App() {
           }
         />
         <Route
-          path="/call"
-          element={isAuthenticated ? <CallPage /> : <Navigate to="/login" />}
+          path="/call/:id"
+          element={
+            isAuthenticated && isOnboarded ? (
+              <Layout showSidebar={false}>
+                <CallPage />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
         />
         <Route
           path="/chat/:id"
